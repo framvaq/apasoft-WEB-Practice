@@ -9,9 +9,9 @@ pipeline {
             steps {
                 echo "The responsible of this project is ${AUTHOR} and and will be deployed in ${ENVIRONMENT}"
                 //Fisrt, drop the directory if exists
-                pwsh 'rmdir -Force -r C:/proyectos/jenkins/directivas/web'
+                pwsh 'rmdir -Force -r C:/proyectos/jenkins/directivas/web-when'
                 //Create the directory
-                pwsh 'mkdir C:/proyectos/jenkins/directivas/web'
+                pwsh 'mkdir C:/proyectos/jenkins/directivas/web-when'
             }
         }
         stage('Drop the Apache HTTPD Docker container') {
@@ -26,7 +26,7 @@ pipeline {
             }
             steps {
                 echo 'Creating the container...'
-                pwsh 'docker run -dit --name app-web -p 9100:80  -v C:/proyectos/jenkins/directivas/web:/usr/local/apache2/htdocs/ httpd'
+                pwsh 'docker run -dit --name app-web -p 9100:80  -v C:/proyectos/jenkins/directivas/web-when:/usr/local/apache2/htdocs/ httpd'
             }
         }
         stage('Crear contenedor nginx') {
@@ -35,13 +35,13 @@ pipeline {
             }
             steps {
                 echo 'Creating the container...'
-                pwsh 'docker run -dit --name app-web -p 9100:80  -v C:/proyectos/jenkins/directivas/web:/usr/share/nginx/html nginx'
+                pwsh 'docker run -dit --name app-web -p 9100:80  -v C:/proyectos/jenkins/directivas/web-when:/usr/share/nginx/html nginx'
             }
         }
         stage('Copy the web application to the container directory') {
             steps {
                 echo 'Copying web application...'
-                pwsh 'cp -r web/* C:/proyectos/jenkins/directivas/web'
+                pwsh 'cp -r web/* C:/proyectos/jenkins/directivas/web-when'
             }
         }
         stage('Checking the app') {
