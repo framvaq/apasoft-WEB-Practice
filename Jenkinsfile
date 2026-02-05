@@ -16,7 +16,7 @@ pipeline {
         stage('Drop the Apache HTTPD Docker container') {
             steps {
                 echo 'droping the container...'
-                pwsh 'docker rm -f apache1'
+                pwsh 'docker rm -f app-web'
             }
         }
         stage('Crear contenedor apache') {
