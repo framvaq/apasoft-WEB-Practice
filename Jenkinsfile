@@ -38,7 +38,20 @@ pipeline {
                 pwsh 'docker run -dit --name app-web -p 9100:80  -v C:/proyectos/jenkins/directivas/web-when:/usr/local/apache2/htdocs/ httpd'
             }
         }
+
         stage('Error message Apache') {
+            when {
+                allOf {
+                    environment name: 'WEBSERVER', value: 'Apache'
+                    anyOf {
+                        environment name: 'ENV', value: 'Test'
+                        environment name: 'ENV', value: 'Production'
+                    }
+                }
+            }
+            steps {
+                echo 'Apache no se puede desplegar en test ni producción'
+            }
         }
 
         stage('Crear contenedor nginx') {
