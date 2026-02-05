@@ -46,7 +46,7 @@ pipeline {
         stage('Checking the app') {
             steps {
                 echo 'Testing the web app'
-                pwsh 'Invoke-WebRequest -UseBasicParsing http://localhost:9000'
+                pwsh 'Invoke-WebRequest -UseBasicParsing http://localhost:9100'
             }
         }
     }
