@@ -41,12 +41,10 @@ pipeline {
 
         stage('Error message Apache') {
             when {
-                allOf {
-                    environment name: 'WEBSERVER', value: 'Apache'
-                    anyOf {
-                        environment name: 'ENV', value: 'Test'
-                        environment name: 'ENV', value: 'Production'
-                    }
+                environment name: 'WEBSERVER', value: 'Apache'
+                anyOf {
+                    environment name: 'ENV', value: 'Test'
+                    environment name: 'ENV', value: 'Production'
                 }
             }
             steps {
