@@ -7,7 +7,6 @@ pipeline {
         stage('Create web directory')
         {
             steps {
-                echo "The responsible of this project is ${AUTHOR} and and will be deployed in ${ENVIRONMENT}"
                 //Fisrt, drop the directory if exists
                 pwsh 'rmdir -Force -r C:/proyectos/jenkins/directivas/web-when'
                 //Create the directory
