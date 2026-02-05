@@ -4,8 +4,7 @@ pipeline {
         WEBSERVER = 'Apache'
     }
     stages {
-        stage('Create web directory')
-        {
+        stage('Create web directory') {
             steps {
                 //Fisrt, drop the directory if exists
                 pwsh 'rmdir -Force -r C:/proyectos/jenkins/directivas/web-when'
