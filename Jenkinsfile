@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        WEBSERVER = 'Apache'
+        WEBSERVER = 'nginx'
     }
     stages {
         stage('Create web directory') {
