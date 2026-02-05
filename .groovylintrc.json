@@ -4,7 +4,13 @@
         "CompileStatic": {
             "enabled": false
         },
+        "DuplicateMapLiteral": {
+            "enabled": false
+        },
         "DuplicateStringLiteral": {
+            "enabled": false
+        },
+        "ExplicitCallToEqualsMethod": {
             "enabled": false
         },
         "LineLength": {
